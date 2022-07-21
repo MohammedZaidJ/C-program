@@ -1,0 +1,359 @@
+day 1					technical training 
+
+
+1)get the 2 array to get large value
+ans;-https:///onlinegdb.com/V639Y4AD0
+	1000+sizeof(int)*2
+	1000+4*2
+	INT_MIN=limit
+
+
+#include <stdio.h>
+int sort(int* a,int n){
+    for(int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+            if(a[i]>a[j]){
+                int t=a[i];
+                a[i]=a[j];
+                a[j]=t;
+            }
+        }
+    }
+    return a[n-1];
+}
+void max(int* a,int len){
+     int max=a[0];
+    for(int i=1;i<len;i++){
+        if(max<a[i])
+        max=a[i];
+    }
+    printf("%d",max);
+   
+}
+int main()
+{
+    int arr[100],size,size2;
+   
+    scanf("%d %d",&size,&size2);
+    int i;
+    for(i=0;i<size;i++){
+        scanf("%d",&arr[i]);
+    }
+    for(int j=0;j<size2;j++){
+            scanf("%d",&arr[i++]);
+    }
+   
+    max(arr,i);
+   printf("\n%d", sort(arr,i));
+}
+
+
+2)pattern
+	1
+	1 1
+	2 1
+	1 2 1 1
+	1 1 1 2 2 1
+
+https://www.onlinegdb.com/P1zMmuDE4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <stdio.h>
+// 
+// 
+int main()
+{
+    int num = 1, i;
+    unsigned long new_num;
+
+    int  j, count, temp;
+
+    for (i= 0 ;i < 5 ; i++)
+    {
+        new_num =  0;
+        j = 1;
+
+        printf("\n %u \t", num);
+
+        while (num)
+        {
+            temp = num % 10;
+
+            num /=10;
+
+            count = 1;
+
+            while (temp == (num%10))
+            {
+                count++;
+                num /=10;
+            }
+
+            printf("count %d, temp %d, j %d, new_num %d \n", count, temp, j, new_num);
+
+            new_num = (((10*count) + temp) *j) + new_num;
+
+            j *= 100;
+        }
+
+        num = new_num;
+    }
+    
+}
+
+
+
+3)matrix sum 
+#include <stdio.h>
+// 
+// 
+int main()
+{
+
+    int n,m,tot=0;
+    scanf("%d %d",&n,&m);
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            int y;
+            scanf("%d",&y);
+            tot+=y;
+        }
+    }
+    printf("%d",tot);
+}
+
+4)array reverse
+#include<stdio.h>
+int main(){
+    int n;
+    scanf("%d",&n);
+    int a[n];
+    for(int i=0;i<n;i++){
+        scanf("%d",&a[i]);
+    }
+    for(int i=0,j=n-1;i<n/2;i++,j--){
+        int t=a[i];
+        a[i]=a[j];
+        a[j]=t;
+    }
+    printf("\n");
+    for(int i=0;i<n;i++){
+        printf("%d ",a[i]);
+    }
+}
+5)get count of the number elements below in array
+6)count occurence 
+7)
+1
+11
+111
+1111
+11111
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    // Write C code here
+    char a='a';
+    int n;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+        for(int j=0;j<=i;j++){
+            printf("%c ",a+j);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+
+DAY-2
+
+1)find the factorial of given number
+#include <stdio.h>
+int mul(int n){
+    if(n>1){
+        return n*mul(n-1);
+    }
+    else{
+        return 1;
+    }
+}
+
+int main()
+{
+    printf("Hello World");
+    int n,m;
+    scanf("%d",&n);
+    m=n--;
+    while(n!=0){
+        m*=n--;
+    }
+    printf("%d",m);
+    n=5;
+    printf("\n%d",mul(n));
+
+    return 0;
+}
+
+2)find the prime number
+#include <stdio.h>
+int see(int n){
+    int u=0;
+    for(int i=3;i<=n;i++){
+        if(n%i==0)
+            return 0;
+    }
+    return 1;
+}
+int main()
+{
+    int n,m;
+    scanf("%d",&n);
+    for(int i=1;i<=n;i++){
+        if(see(i)){
+            printf("%d ",i);
+        }
+    }
+    return 0;
+}
+
+
+3)display in function
+#include <stdio.h>
+int see(int n){
+    int u=0;
+    for(int i=2;i<n;i++){
+        if(n%i==0)
+            u++;
+    }
+    if(u>0){
+        return 0;
+    }
+    return 1;
+}
+int display(int a[],int n){
+    for(int i=0;i<n;i++){
+        printf("%d ",a[i]);
+    }
+}
+int main()
+{
+    int n,m;
+    scanf("%d",&n);
+    int a[1001],a1=0;
+    for(int i=2;i<=n;i++){
+        if(see(i)){
+            a[a1++]=i;
+        }
+    }
+    display(a,a1);
+    return 0;
+}
+
+
+4)grade 91-A, 76-B, 61>=75 - C, 60>D
+
+#include <stdio.h>
+
+int main()
+{
+    int n,m;
+    scanf("%d",&n);
+    printf("Sivarahman is ");
+    if(n>=91){
+        printf("A");
+    }
+    else if(n>76 && n<91){
+        printf("B");
+    }
+    else if(n>60){
+        printf("c");
+    }
+    else {
+        printf("D");
+    }
+    return 0;
+}
+
+
+5)aaaabbccccaa
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+    int n,m;
+    char s[1001];
+    scanf("%s",s);
+    n=strlen(s);
+    for(int i=0;i<n;i++){
+        int u=1;
+        printf("%c",s[i]);
+        if(s[i]==s[i+1]){
+            for(int j=i+1;j<n;j++){
+                if(s[i]==s[j])
+                u++;
+                else{
+                    i=j-1;
+                    break;
+                }
+            }
+        }
+        printf("%d",u);
+        if(i==strlen(s)-2){
+            break;
+        }
+        
+        
+    }
+    
+}
+
+6)recursion
+
+DAY -3
+
+1)sum of natural number
+https://onlinegdb.com/1vcuG1LSv
+
+2)fibnocis series
+https://onlinegdb.com/x1Eg9WTbZ
+
+3)fib position
+https://onlinegdb.com/m-4Er23Zd
+4) print prime no..
+https://onlinegdb.com/o_6d-CNOg
+5)factorial no..
+https://onlinegdb.com/6d0TLv2s9
+6) factorial count zero
+https://onlinegdb.com/ENhbur5bs
+7)removing 0s trials bit
+https://onlinegdb.com/vDm7KQ-n6
+8)print len string
+https://onlinegdb.com/ueD31bH8A
+
+
+
+
+
+DAY-4:
+1)array saving in ROM by using malloc
+https://onlinegdb.com/2aeVBA-4sh
+2)copy code
+https://www.onlinegdb.com/P1zMmuDE4
